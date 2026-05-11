@@ -1,0 +1,9 @@
+Copyright © 2026 hotmessdev. All rights reserved.
+
+This repository hosts release artifacts (DMG files, appcast.xml, README) for
+CookPlanStudio. The release artifacts are provided for installation use only;
+redistribution, decompilation, or reverse-engineering of the bundled
+CookPlanStudio.app is not permitted.
+
+No source code is included in this repository. CookPlanStudio's source is
+maintained in a private repository.
