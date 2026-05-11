@@ -6,6 +6,15 @@
         <description>Sparkle auto-update feed for CookPlanStudio. Items are appended by scripts/release-studio.sh in the private CookPlanMobile source repo after each notarized DMG cut. EdDSA signatures verify against the SUPublicEDKey embedded in the running app's Info.plist. This file is served from the public CookPlanStudio-releases repo because the source repo is private and not anonymously readable.</description>
         <language>en</language>
         <item>
+            <title>CookPlanStudio 1.24.0</title>
+            <link>https://github.com/hotmessdev/CookPlanStudio-releases/releases/tag/v-studio-1.24.0</link>
+            <sparkle:version>50</sparkle:version>
+            <sparkle:shortVersionString>1.24.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <pubDate>Mon, 11 May 2026 22:34:14 +0000</pubDate>
+            <enclosure url="https://github.com/hotmessdev/CookPlanStudio-releases/releases/download/v-studio-1.24.0/CookPlanStudio-1.24.0.dmg" sparkle:edSignature="YkCpBgpw7883n5iMvePzL/Fhm60jx12yskID+ecXAyK6M+X3wmUT4b+ewDcbSFwAwwe70o/7KueOkE53BZsVCQ==" length="4396296" type="application/x-apple-diskimage" />
+        </item>
+        <item>
             <title>CookPlanStudio 1.23.0</title>
             <link>https://github.com/hotmessdev/CookPlanStudio-releases/releases/tag/v-studio-1.23.0</link>
             <sparkle:version>49</sparkle:version>
