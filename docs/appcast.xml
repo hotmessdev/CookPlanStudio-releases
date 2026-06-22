@@ -9,7 +9,6 @@
             <title>CookPlanStudio 1.34.1</title>
             <link>https://github.com/hotmessdev/CookPlanStudio-releases/releases/tag/v-studio-1.34.1</link>
             <sparkle:version>62</sparkle:version>
-            <sparkle:channel>test</sparkle:channel>
             <sparkle:shortVersionString>1.34.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <pubDate>Mon, 22 Jun 2026 23:01:08 +0000</pubDate>
