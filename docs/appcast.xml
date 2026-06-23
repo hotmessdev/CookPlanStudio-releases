@@ -29,7 +29,6 @@
             <title>CookPlanStudio 1.36.0</title>
             <link>https://github.com/hotmessdev/CookPlanStudio-releases/releases/tag/v-studio-1.36.0</link>
             <sparkle:version>65</sparkle:version>
-            <sparkle:channel>dev</sparkle:channel>
             <sparkle:shortVersionString>1.36.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <pubDate>Tue, 23 Jun 2026 17:48:13 +0000</pubDate>
