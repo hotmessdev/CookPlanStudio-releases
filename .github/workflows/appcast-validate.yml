@@ -1,0 +1,37 @@
+# appcast-validate — CPM-153 R3 (monorepo issue #1037).
+#
+# Validates docs/appcast.xml on EVERY pull request to main (no path filter —
+# the ruleset requires this check on all PRs, and a path-filtered required
+# check would deadlock non-appcast PRs) plus a push-to-main guard run.
+#
+# The validator is a byte-copy of the monorepo canonical
+# (CookPlanMobile scripts/lib/appcast_validate.py); publish-studio.sh /
+# promote-studio.sh hard-fail on hash drift between the two, so keep any
+# change to scripts/appcast_validate.py in lockstep via the monorepo.
+#
+# Checks: well-formed XML · per-item structure (positive-int sparkle:version,
+# non-empty edSignature, enclosure url/length) · sparkle:version strictly
+# decreasing in document order (dup-CPV = the s102 invisible-release class;
+# gaps legal) · channel ∈ {dev, test} (stable = untagged) · every enclosure
+# URL maps to a live non-draft release asset of this repo with size == length=.
+name: appcast-validate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  appcast-validate:
+    name: appcast-validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate appcast (structure + monotonicity + channels + live assets)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/appcast_validate.py docs/appcast.xml --assets "${{ github.repository }}"
