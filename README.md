@@ -31,3 +31,5 @@ Versions v1.20.0, v1.20.1, and v1.20.2 shipped with non-functional Sparkle feed 
 ## License
 
 Distribution-only repo; release assets are © hotmessdev. Source is private.
+
+<!-- appcast-validate required-check verification: README-only PRs still get a status (CPM-153 T4, 2026-07-17) -->
