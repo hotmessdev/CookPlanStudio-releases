@@ -175,8 +175,20 @@ def validate(path):
 
         channel_el = item.find("sparkle:channel", NS)
         if channel_el is not None:
-            ctext = (channel_el.text or "").strip()
-            if ctext not in ("dev", "test"):
+            raw = channel_el.text or ""
+            ctext = raw.strip()
+            if raw != ctext:
+                # Sparkle does NOT strip channel text (#1041 F1): 'dev ' is a
+                # distinct channel, so dev clients would silently never see
+                # the item — exactly the invisibility class this validator
+                # exists to catch.
+                violations.append(
+                    f"channel: {label} sparkle:channel {raw!r} has "
+                    "leading/trailing whitespace — Sparkle does not strip, "
+                    "so this is a distinct channel, never matching "
+                    "'dev'/'test'"
+                )
+            elif ctext not in ("dev", "test"):
                 violations.append(
                     f"channel: {label} sparkle:channel {ctext!r} must be "
                     "'dev' or 'test' (omit the element entirely for stable)"
@@ -201,6 +213,15 @@ def validate(path):
                 violations.append(
                     f"structure: {label} <enclosure> missing or non-numeric "
                     "length= attribute"
+                )
+            # Required per CPM-153 spec §2-E (#1041 F3): presence + non-empty
+            # only — no specific MIME value is pinned. appcast_splice_item
+            # always emits type="application/x-apple-diskimage"; this catches
+            # hand-edits to the public repo that drop the attribute.
+            if not (enclosure.get("type") or "").strip():
+                violations.append(
+                    f"structure: {label} <enclosure> missing non-empty "
+                    "type= attribute"
                 )
 
     # Monotonicity: sparkle:version strictly decreasing across ALL items in
