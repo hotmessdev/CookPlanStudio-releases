@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """appcast_validate.py — canonical Sparkle appcast.xml validator (CPM-153 R1).
 
-stdlib-only (python3, no pip installs — this runs on a bare ubuntu-latest
-runner as well as the macOS dev/CI host). Validates the structural and
+stdlib-only (python3, no pip installs — keeps it runnable anywhere without
+setup; note the repo's CI runners are all self-hosted macOS, no ubuntu
+runner exists — comment trued s486). Validates the structural and
 ordering invariants that scripts/lib/appcast.sh's helpers already enforce
 at cut time (appcast_splice_item / appcast_retag_item), so the same rules
 can be re-checked wherever the appcast actually lands: this monorepo's
